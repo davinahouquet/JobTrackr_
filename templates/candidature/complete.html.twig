@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Candidature{% endblock %}
+
+{% block body %}
+{{ parent() }} 
+    <h1>Ajouter une candidature</h1>
+    {{ form_start(form) }}
+    <div class="row">
+        <h2>L'offre et l'entreprise</h2>
+        <div class="col-md-3">
+            {{ form_row(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.lieu_travail, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.numero, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.lien_offre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.diffusion, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.salaire, {'attr': {'class': 'form-control'}}) }} 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_row(form.nom_entreprise, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.lien_entreprise, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.siret, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.date_candidature, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.cv, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.lettre_motivation, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.date_relance, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.entretien, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.status, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <h3>L'auteur de l'annonce</h3>
+        <div class="col-md-6">
+            {{ form_row(form.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.poste, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.telephone, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.linkdin, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}

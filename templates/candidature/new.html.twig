@@ -1,0 +1,37 @@
+{# templates/candidature/new.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}New Candidature{% endblock %}
+
+{% block body %}
+    <h1>New Candidature</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.nom_entreprise) }}
+        {{ form_row(form.lien_entreprise) }}
+        {{ form_row(form.siret) }}
+        {{ form_row(form.numero) }}
+        {{ form_row(form.titre) }}
+        {{ form_row(form.lieu_travail) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.diffusion) }}
+        {{ form_row(form.salaire) }}
+        {{ form_row(form.lien_offre) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.poste) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.linkdin) }}
+        {{ form_row(form.date_candidature) }}
+        {{ form_row(form.cv) }}
+        {{ form_row(form.lettre_motivation) }}
+        {{ form_row(form.date_relance) }}
+        {{ form_row(form.entretien) }}
+        {{ form_row(form.status) }}
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+    {{ form_end(form) }}
+
+{% endblock %}
