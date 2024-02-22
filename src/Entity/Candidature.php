@@ -52,6 +52,11 @@ class Candidature
         return $this;
     }
 
+    public function getDateCandidatureFr(): ?string
+    {
+        return $this->date_candidature->format("d-m-Y");
+    }
+
     public function isCv(): ?bool
     {
         return $this->cv;
@@ -79,6 +84,11 @@ class Candidature
     public function getDateRelance(): ?\DateTimeInterface
     {
         return $this->date_relance;
+    }
+
+    public function getDateRelanceFr(): ?string
+    {
+        return $this->date_candidature->format("d-m-Y");
     }
 
     public function setDateRelance(?\DateTimeInterface $date_relance): static
@@ -123,4 +133,12 @@ class Candidature
 
         return $this;
     }
+
+    // public function candidatureParSemaine(){
+
+    // }
+
+    // public function candidatureParMois(){
+        
+    // }
 }

@@ -28,6 +28,9 @@ class Entreprise
     #[ORM\OneToMany(targetEntity: Offre::class, mappedBy: 'entreprise')]
     private Collection $offres;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $adresse = null;
+
     public function __construct()
     {
         $this->offres = new ArrayCollection();
@@ -100,6 +103,23 @@ class Entreprise
                 $offre->setEntreprise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom_entreprise;   
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): static
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }

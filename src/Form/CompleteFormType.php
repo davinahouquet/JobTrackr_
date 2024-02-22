@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -12,7 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
 
 class CompleteFormType extends AbstractType
 {
@@ -20,65 +23,86 @@ class CompleteFormType extends AbstractType
     {
         $builder
             ->add('nom_entreprise', TextType::class, [
-                'label' => 'Nom de l\'entreprise*'
+                'label' => 'Nom de l\'entreprise*',
+                // 'data' => 'Nom de Test Entreprise'
             ])
             ->add('lien_entreprise', UrlType::class, [
                 'label' => 'Lien de l\'entreprise',
+                'required' => false,
+                // 'data' => 'https://www.example.com'
+            ])
+            ->add('adresse', TextareaType::class, [
+                'label' => 'Adresse de l\'entreprise',
                 'required' => false
             ])
             ->add('siret', TextType::class, [
                 'label' => 'Numéro SIRET',
-                'required' => false
+                'required' => false,
+                // 'data' => '12345678900001'
             ])
             ->add('numero', TextType::class, [
                 'label' => 'N° de l\'offre',
-                'required' => false
+                'required' => false,
+                // 'data' => '123'
             ])
             ->add('titre', TextType::class, [
-                'label' => 'Titre de l\'annonce*'
+                'label' => 'Titre de l\'annonce*',
+                // 'data' => 'Titre de Test Annonce'
             ])
             ->add('lieu_travail', TextType::class, [
-                'label' => 'Lieu de travail*'
+                'label' => 'Lieu de travail*',
+                // 'data' => 'Lieu de Test Travail'
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description du poste*'
+                'label' => 'Description du poste*',
+                // 'data' => 'Description de Test Poste'
             ])
             ->add('diffusion', TextType::class, [
                 'label' => 'Où avez-vous trouvé cette annonce ?',
-                'required' => false
+                'required' => false,
+                // 'data' => 'Réseau professionnel'
             ])
             ->add('salaire', TextType::class, [
-                'label' => 'Salaire*'
+                'label' => 'Salaire annuel*',
+                // 'data' => '30000'
             ])
             ->add('lien_offre', UrlType::class, [
                 'label' => 'Lien de l\'offre',
-                'required' => false
+                'required' => false,
+                // 'data' => 'https://www.example.com/offre'
             ])
             ->add('prenom', TextType::class, [
-                'label' => 'Prénom',
-                'required' => false
+                'label' => 'Prénom du contact',
+                'required' => false,
+                // 'data' => 'John'
             ])
             ->add('nom', TextType::class, [
-                'label' => 'Nom*'
+                'label' => 'Nom du contact',
+                // 'data' => 'Doe'
             ])
             ->add('poste', TextType::class, [
                 'label' => 'Quel est son poste ?',
-                'required' => false
+                'required' => false,
+                // 'data' => 'Ingénieur'
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',
-                'required' => false
+                'required' => false,
+                // 'data' => 'john.doe@example.com'
             ])
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone',
-                'required' => false
+                'required' => false,
+                // 'data' => '0123456789'
             ])
             ->add('linkdin', UrlType::class, [
                 'label' => 'Profil LinkedIn',
-                'required' => false
+                'required' => false,
+                // 'data' => 'https://www.linkedin.com/in/johndoe'
             ])
             ->add('date_candidature', DateType::class, [
-                'label' => 'Date de candidature*'
+                'label' => 'Date de candidature*',
+                'data' => new \DateTime()
             ])
             ->add('cv', ChoiceType::class, [
                 'label' => 'Avez-vous transmis votre CV ?*',
@@ -86,6 +110,7 @@ class CompleteFormType extends AbstractType
                     'Oui' => true,
                     'Non' => false,
                 ],
+                // 'data' => true
             ])
             ->add('lettre_motivation', ChoiceType::class, [
                 'label' => 'Avez-vous transmis votre lettre de motivation*',
@@ -93,16 +118,17 @@ class CompleteFormType extends AbstractType
                     'Oui' => true,
                     'Non' => false,
                 ],
+                // 'data' => true
             ])
             ->add('date_relance', DateType::class, [
-                'label' => 'Date de relance'
+                'label' => 'Date de relance',
+                'data' => new \DateTime(),
+                'required' => false
             ])
-            ->add('entretien', ChoiceType::class, [
-                'choices' => [
-                    'Oui' => true,
-                    'Non' => false,
-                ],
-                'label' => 'Entretien'
+            ->add('entretien', TextareaType::class, [
+                'required' => false,
+                'label' => 'Entretien',
+                // 'data' => false
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => [
@@ -110,9 +136,9 @@ class CompleteFormType extends AbstractType
                     'Accepté' => 'Accepté',
                     'Refusé' => 'Refusé',
                 ],
-                'label' => 'Statut'
+                'label' => 'Status',
+                // 'data' => 'En cours'
             ]);
-
         ;
     }
 
