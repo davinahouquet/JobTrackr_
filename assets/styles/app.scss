@@ -4,5 +4,9 @@ $white: #ffffff;
 $dark-grey: rgb(152, 151, 151);
 
 body {
-    background: $white;
+    background: $dark-grey;
+}
+
+.container{
+    padding: 50px
 }

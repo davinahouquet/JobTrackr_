@@ -4,6 +4,8 @@
 
 {% block body %}
 {{ parent() }} 
+<div class="container">
+
     <h1>Ajouter une candidature</h1>
     {{ form_start(form) }}
     <div class="row">
@@ -38,6 +40,9 @@
         </div>
         <div class="col-md-3">
             {{ form_row(form.lien_entreprise, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.adresse, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="col-md-3">
             {{ form_row(form.siret, {'attr': {'class': 'form-control'}}) }}
@@ -95,4 +100,5 @@
 
     <button type="submit" class="btn btn-dark">Submit</button>
     {{ form_end(form) }}
+</div>
 {% endblock %}

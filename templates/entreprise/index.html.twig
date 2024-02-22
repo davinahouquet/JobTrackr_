@@ -4,4 +4,26 @@
 
 {% block body %}
     {{ parent() }} 
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Siret</th>
+                <th scope="col">Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for entreprise in entreprises %}
+                    
+                    <tr>
+                        <td><a href="{{ entreprise.lienEntreprise }}"></a>{{entreprise.nomEntreprise}}</td>
+                        <td>{{ entreprise.siret }}</td>
+                        <td>Adresse</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
