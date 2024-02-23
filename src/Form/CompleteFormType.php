@@ -78,6 +78,7 @@ class CompleteFormType extends AbstractType
             ])
             ->add('nom', TextType::class, [
                 'label' => 'Nom du contact',
+                'required' => false,
                 // 'data' => 'Doe'
             ])
             ->add('poste', TextType::class, [
@@ -122,7 +123,6 @@ class CompleteFormType extends AbstractType
             ])
             ->add('date_relance', DateType::class, [
                 'label' => 'Date de relance',
-                'data' => new \DateTime(),
                 'required' => false
             ])
             ->add('entretien', TextareaType::class, [

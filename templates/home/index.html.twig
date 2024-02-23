@@ -19,7 +19,7 @@
                 <tbody>
                   {% for candidature in candidatures %}
                     <tr>
-                      <th scope="row">1</th>
+                      <th scope="row">{{ loop.index }}</th>
                       {# offre #}
                       <td><a href="{{ candidature.offre.lienOffre }}">{{ candidature.offre.titre }}</a></td>
                       <td>📍 {{ candidature.offre.lieuTravail }}</td>
@@ -31,7 +31,7 @@
                       <th scope="row"></th>
                       <td>{{ candidature.offre.description }}</td>
                       <td>💸 {{ candidature.offre.salaire }}€/an</td>
-                      <td>12 Rue Exemple<br>37000 Strasbourg</td>
+                      <td>{{ candidature.offre.entreprise.adresse }}</td>
                       <td>
                         {% if candidature.dateRelance %}
                           Relance : {{ candidature.dateRelanceFr }}</td>
@@ -40,7 +40,7 @@
                         {% endif %}
                       <td><a href="" class="btn btn-dark"><span class="material-symbols-outlined">
                         edit
-                        </span></a>
+                        </span></a><br>
                         <a href="{{ path('delete_candidature', {id: candidature.id}) }}" class="btn btn-dark"><span class="material-symbols-outlined">
                           delete
                           </span></a></td>
@@ -49,7 +49,7 @@
             
                 </tbody>
               </table>
-              <a href="{{ path('app_candidature') }}" class="btn btn-dark">Voir toutes les candidatures</a>
+              {# <a href="{{ path('app_candidature') }}" class="btn btn-dark">Voir toutes les candidatures</a> #}
               <a href="{{ path('new_candidature') }}" class="btn btn-dark">Ajouter une candidature</a>
     </div>
 
